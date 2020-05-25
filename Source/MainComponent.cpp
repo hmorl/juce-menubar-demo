@@ -12,6 +12,14 @@
 MainComponent::MainComponent()
 {
     setSize (600, 400);
+    
+    m_buttonOne.setButtonText ("Button 1");
+    m_buttonOne.setClickingTogglesState (true);
+    addAndMakeVisible (m_buttonOne);
+    
+    m_buttonTwo.setButtonText ("Button 2");
+    m_buttonTwo.setClickingTogglesState (true);
+    addAndMakeVisible (m_buttonTwo);
 }
 
 MainComponent::~MainComponent()
@@ -21,17 +29,14 @@ MainComponent::~MainComponent()
 //==============================================================================
 void MainComponent::paint (Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
+    // Fill the background
     g.fillAll (getLookAndFeel().findColour (ResizableWindow::backgroundColourId));
-
-    g.setFont (Font (16.0f));
-    g.setColour (Colours::white);
-    g.drawText ("Hello World!", getLocalBounds(), Justification::centred, true);
 }
 
 void MainComponent::resized()
 {
-    // This is called when the MainComponent is resized.
-    // If you add any child components, this is where you should
-    // update their positions.
+    // The bounds of the buttons are just hardcoded for the purposes of the demo
+    m_buttonOne.setBounds (100, 100, 80, 50);
+    m_buttonTwo.setBounds (400, 300, 80, 50);
+}
 }
