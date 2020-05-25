@@ -1,0 +1,6 @@
+# JUCE
+**/Builds
+**/JuceLibraryCode
+
+# Misc
+.DS_Store
