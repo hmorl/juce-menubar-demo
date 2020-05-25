@@ -10,6 +10,46 @@
 
 #include <JuceHeader.h>
 
+class DemoMenuBar   : public MenuBarModel
+{
+public:
+    DemoMenuBar() {};
+    ~DemoMenuBar() {};
+
+    void setComponentToReturnFocusTo (Component* component)
+    {
+        m_componentToReturnFocusTo = component;
+    };
+    
+    juce::StringArray getMenuBarNames() override
+    {
+        return StringArray ("File", "Edit");
+    };
+
+    juce::PopupMenu getMenuForIndex (int topLevelMenuIndex,
+                                     const juce::String &menuName) override
+    {
+        juce::PopupMenu menu;
+        
+        menu.addItem (1, "Menu item 1");
+        menu.addItem (2, "Menu item 2");
+        menu.addItem (3, "Menu item 3");
+
+        return menu;
+    };
+
+    void menuItemSelected (int menuItemID, int topLevelMenuIndex) override
+    {
+        std::cout << "Menu item with ID " << menuItemID << " selected" << std::endl;
+        
+        if(m_componentToReturnFocusTo != nullptr)
+            m_componentToReturnFocusTo->grabKeyboardFocus();
+    };
+    
+private:
+    Component* m_componentToReturnFocusTo {nullptr};
+};
+
 //==============================================================================
 /*
     This component lives inside our window, and this is where you should put all
@@ -27,9 +67,7 @@ public:
     void resized() override;
 
 private:
-    //==============================================================================
-    // Your private member variables go here...
-
+    DemoMenuBar m_menuBar;
     
     juce::TextButton m_buttonOne;
     juce::TextButton m_buttonTwo;

@@ -13,6 +13,9 @@ MainComponent::MainComponent()
 {
     setSize (600, 400);
     
+    #if JUCE_MAC
+     MenuBarModel::setMacMainMenu (&m_menuBar);
+    #endif
     m_buttonOne.setButtonText ("Button 1");
     m_buttonOne.setClickingTogglesState (true);
     addAndMakeVisible (m_buttonOne);
@@ -24,6 +27,9 @@ MainComponent::MainComponent()
 
 MainComponent::~MainComponent()
 {
+    #if JUCE_MAC
+     MenuBarModel::setMacMainMenu (nullptr);
+    #endif
 }
 
 //==============================================================================
