@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="PxeHKo" name="juce-menubar-test" projectType="guiapp" jucerVersion="5.4.7">
-  <MAINGROUP id="ljzWuh" name="juce-menubar-test">
-    <GROUP id="{1233A508-BBF3-E076-6B56-A35ACBF322C1}" name="Source">
-      <FILE id="wC19IN" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
-      <FILE id="O7gDkE" name="MainComponent.cpp" compile="1" resource="0"
+<JUCERPROJECT id="RHSHdn" name="juce-menubar-demo" projectType="guiapp" jucerVersion="5.4.7">
+  <MAINGROUP id="GhFKrB" name="juce-menubar-demo">
+    <GROUP id="{DF1095F1-EF64-9418-3215-A8D61B80C9FA}" name="Source">
+      <FILE id="mRLrw9" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="iUHWsE" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
-      <FILE id="zgUGZg" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="suaBJX" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
