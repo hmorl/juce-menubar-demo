@@ -55,12 +55,20 @@ private:
     This component lives inside our window, and this is where you should put all
     your controls and content.
 */
-class MainComponent   : public Component
+class MainComponent   : public Component,
+                        public MenuBarModel::Listener
 {
 public:
     //==============================================================================
     MainComponent();
     ~MainComponent();
+    
+    void menuBarItemsChanged (juce::MenuBarModel *menuBarModel) override;
+    
+    void menuCommandInvoked (juce::MenuBarModel *menuBarModel,
+                             const ApplicationCommandTarget::InvocationInfo &info) override;
+    
+    void menuBarActivated (MenuBarModel* menuBarModel, bool isActive) override;
 
     //==============================================================================
     void paint (Graphics&) override;

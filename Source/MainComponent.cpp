@@ -13,9 +13,12 @@ MainComponent::MainComponent()
 {
     setSize (600, 400);
     
+    m_menuBar.addListener (this);
+    
     #if JUCE_MAC
      MenuBarModel::setMacMainMenu (&m_menuBar);
     #endif
+    
     m_buttonOne.setButtonText ("Button 1");
     m_buttonOne.setClickingTogglesState (true);
     addAndMakeVisible (m_buttonOne);
@@ -27,6 +30,8 @@ MainComponent::MainComponent()
 
 MainComponent::~MainComponent()
 {
+    m_menuBar.removeListener (this);
+    
     #if JUCE_MAC
      MenuBarModel::setMacMainMenu (nullptr);
     #endif
@@ -45,4 +50,21 @@ void MainComponent::resized()
     m_buttonOne.setBounds (100, 100, 80, 50);
     m_buttonTwo.setBounds (400, 300, 80, 50);
 }
+
+void MainComponent::menuBarItemsChanged (juce::MenuBarModel *menuBarModel)
+{}
+
+void MainComponent::menuCommandInvoked (juce::MenuBarModel *menuBarModel,
+                                        const ApplicationCommandTarget::InvocationInfo &info)
+{}
+
+void MainComponent::menuBarActivated (MenuBarModel* menuBarModel, bool isActive)
+{
+    std::cout << "Menu bar " << (isActive ? "activated" : "deactivated") << std::endl;
+
+    if (isActive)
+    {
+        m_menuBar.setComponentToReturnFocusTo (getCurrentlyFocusedComponent());
+        unfocusAllComponents();
+    }
 }
